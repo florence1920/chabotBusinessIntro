@@ -1,9 +1,20 @@
 <template>
   <div id="app">
-
     <router-view/>
+    <Footer></Footer>
   </div>
 </template>
+
+<script>
+import Footer from './components/common/footer.vue'
+
+export default {
+  components: {
+    Footer,
+  },
+}
+</script>
+
 
 <style>
 @import './assets/css/reset.css';
