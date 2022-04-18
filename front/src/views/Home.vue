@@ -20,5 +20,6 @@ import Tech from '../components/main/tech.vue'
 import Visual from '../components/main/visual.vue'
 export default {
   components: {Nav, News, Partner, People, Summary, Tech, Visual},
+  
 }
 </script>
