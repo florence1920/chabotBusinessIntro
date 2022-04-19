@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="visualWrap">
       visual
   </div>
 </template>
@@ -10,6 +10,6 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+  .visualWrap {padding: 200px 0 ;}
 </style>

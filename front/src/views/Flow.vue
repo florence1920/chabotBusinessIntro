@@ -63,6 +63,20 @@
 								<p class="price"><del><span class="pr">$</span>88</del><span class="wp"><span class="pr">$</span>56</span></p>
 							</a>
 						</li>
+                        <li>
+							<a href="#">
+								<p class="txt"><em>1[DIOR]</em>DIOR ADDICT LIP GLOW CORAL</p>
+								<p class="price"><del><span class="pr">$</span>88</del><span class="wp"><span class="pr">$</span>56</span></p>
+							</a>
+						</li>
+                        <li>
+							<a href="#">
+								<p class="txt"><em>1[DIOR]</em>DIOR ADDICT LIP GLOW CORAL</p>
+								<p class="price"><del><span class="pr">$</span>88</del><span class="wp"><span class="pr">$</span>56</span></p>
+							</a>
+						</li>
+         
+            
 					</ul>
 				</div>
 			</div>
@@ -72,80 +86,85 @@
 <script>
   import $ from 'jquery'
   export default {
+      methods: {
+          flow() {
+                $(document).ready(function(){
+                var moveType = 0; 
+                var moveSpeed = 2000; 
+                var moveWork = false; 
+                var movePause = false; 
+
+                function tkSlide(){		
+                    var $tkSlide = $('#tickerSlide'),
+                    $tkSlidePos = $('#tickerSlide').css('left').replace(/[^-\d\.]/g, ''),
+                    $tkWidth = $('#tickerSlide').width(),
+                    $tklength = $('#tickerSlide li').length,
+                    $tkSlideW = $tkWidth + 400,
+                    $tkitemW = $('#tickerSlide li').width(),
+                    $tkitemFirst = $('#tickerSlide li:first-child');
+
+                    $tkSlide.css({
+                    'left' : $tkSlidePos,
+                    'width' : $tkWidth + $tkitemW
+                    });
+                    if(moveWork==false){
+                    if(moveType==0){
+                        $tkSlide.css('left' ,$tkSlidePos);
+                        $tkSlide.animate({left : -$tkitemW},{duration:moveSpeed, easing:"linear", step:function(){
+                        if(movePause==true){ 
+                            $tkSlide.stop();
+                        }
+                        }, complete:function(){
+                        $tkSlide.append("<li>" + $('#tickerSlide li:first-child').html() + "</li>");
+                        $('#tickerSlide li:first-child').remove(); 
+                        $tkSlide.css('left' ,'0');
+                        tkSlide();
+                        }});
+                    }
+                    }
+                }
+                $('#tickerSlide').parent().on("mouseenter", function(){
+                    movePause=true;
+                });
+                $('#tickerSlide').parent().on("mouseleave", function(){
+                    movePause=false;
+                    tkSlide();
+                });
+                $('.slideWrap >a.bxBtn').on('click', function(){
+                    var $thisClass = $(this).hasClass("bx-prev");
+
+                    if($thisClass){
+                    for(var i=0;i<5;i++){				
+                        var $tkSlide = $('#tickerSlide'),				
+                        $tkitem = $('#tickerSlide li:last-child()').html();
+
+                        $('#tickerSlide li:first-child()').before("<li>" + $tkitem + "</li>");
+                        $('#tickerSlide li:last-child()').remove();
+                    }
+                    $tkSlide.animate({left : 200}, 500, function(){
+                        $tkSlide.css('left' ,'0');	
+                    });
+                    } else {
+                    for(var i=0;i<5;i++){				
+                        var $tkSlide = $('#tickerSlide'),				
+                        $tkitem = $('#tickerSlide li:nth-child(1)').html();
+
+                        $tkSlide.append("<li>" + $tkitem + "</li>");
+                        $('#tickerSlide li:nth-child(1)').remove();
+                    }
+                    $tkSlide.animate({left : -200}, 500, function(){
+                        $tkSlide.css('left' ,'0');	
+                    });
+                    
+                    }
+                });
+                tkSlide();
+                console.log('tktk');
+                });
+          }
+      },
       mounted () {
-        //   $(document).ready(function(){
-        //   var moveType = 0; 
-        //   var moveSpeed = 2000; 
-        //   var moveWork = false; 
-        //   var movePause = false; 
-
-        //   function tkSlide(){		
-        //     var $tkSlide = $('#tickerSlide'),
-        //       $tkSlidePos = $('#tickerSlide').css('left').replace(/[^-\d\.]/g, ''),
-        //       $tkWidth = $('#tickerSlide').width(),
-        //       $tklength = $('#tickerSlide li').length,
-        //       $tkSlideW = $tkWidth + 400,
-        //       $tkitemW = $('#tickerSlide li').width(),
-        //       $tkitemFirst = $('#tickerSlide li:first-child');
-
-        //     $tkSlide.css({
-        //       'left' : $tkSlidePos,
-        //       'width' : $tkWidth + $tkitemW
-        //     });
-        //     if(moveWork==false){
-        //       if(moveType==0){
-        //         $tkSlide.css('left' ,$tkSlidePos);
-        //         $tkSlide.animate({left : -$tkitemW},{duration:moveSpeed, easing:"linear", step:function(){
-        //           if(movePause==true){ 
-        //             $tkSlide.stop();
-        //           }
-        //         }, complete:function(){
-        //           $tkSlide.append("<li>" + $('#tickerSlide li:first-child').html() + "</li>");
-        //           $('#tickerSlide li:first-child').remove(); 
-        //           $tkSlide.css('left' ,'0');
-        //           tkSlide();
-        //         }});
-        //       }
-        //     }
-        //   }
-        //   $('#tickerSlide').parent().on("mouseenter", function(){
-        //     movePause=true;
-        //   });
-        //   $('#tickerSlide').parent().on("mouseleave", function(){
-        //     movePause=false;
-        //     tkSlide();
-        //   });
-        //   $('.slideWrap >a.bxBtn').on('click', function(){
-        //     var $thisClass = $(this).hasClass("bx-prev");
-
-        //     if($thisClass){
-        //       for(var i=0;i<5;i++){				
-        //         var $tkSlide = $('#tickerSlide'),				
-        //         $tkitem = $('#tickerSlide li:last-child()').html();
-
-        //         $('#tickerSlide li:first-child()').before("<li>" + $tkitem + "</li>");
-        //         $('#tickerSlide li:last-child()').remove();
-        //       }
-        //       $tkSlide.animate({left : 200}, 500, function(){
-        //         $tkSlide.css('left' ,'0');	
-        //       });
-        //     } else {
-        //       for(var i=0;i<5;i++){				
-        //         var $tkSlide = $('#tickerSlide'),				
-        //         $tkitem = $('#tickerSlide li:nth-child(1)').html();
-
-        //         $tkSlide.append("<li>" + $tkitem + "</li>");
-        //         $('#tickerSlide li:nth-child(1)').remove();
-        //       }
-        //       $tkSlide.animate({left : -200}, 500, function(){
-        //         $tkSlide.css('left' ,'0');	
-        //       });
-              
-        //     }
-        //   });
-        //   tkSlide();
-        //   console.log('tktk');
-        // });    
+            this.flow();
       }
   }
 </script>

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Nav></Nav>
     <Visual></Visual>
     <Summary></Summary>
     <Tech></Tech>
