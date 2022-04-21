@@ -5,10 +5,10 @@
       </video>
       <div class="shadow"></div>
       <div class="txtWrap">
-          <div class="txt_1">
+          <!-- <div class="txt_1">
               <p class="tit">Make your AI</p>
               <p class="tit">Dreams a Reality</p>
-          </div>
+          </div> -->
           <div class="txt_2">
               <p class="sub">Innovate Your Everyday Life With</p>
               <p class="tit">Trusted AI</p>
